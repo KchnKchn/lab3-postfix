@@ -1,14 +1,10 @@
-#include <algorithm>
 #include <iostream>
-#include <cctype>
 #include <string>
 #include <memory>
 #include "Value.h"
 #include "Queue.h"
 #include "Converter.h"
 #include "Calculator.h"
-#include "Operands.h"
-#include <iomanip>
 
 int main()
 {
@@ -20,7 +16,6 @@ int main()
 
 	std::cout << "Enter mathematical expression : ";
 	std::getline(std::cin, str);
-	str.erase(std::remove_if(str.begin(), str.end(), std::isspace), str.end());
 	
 	queue = Convert.ConvertToQueue(str);
 	queue = Convert.ConvertToPostfix(queue);

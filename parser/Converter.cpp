@@ -1,5 +1,7 @@
 #include <memory>
 #include <string>
+#include <algorithm>
+#include <cctype>
 #include "Value.h"
 #include "Brackets.h"
 #include "Operands.h"
@@ -21,6 +23,7 @@ std::shared_ptr<Operand> Converter::CreateOperand(const std::string str, size_t 
 
 Queue<std::shared_ptr<Value>> Converter::ConvertToQueue(std::string str)
 {
+	str.erase(std::remove_if(str.begin(), str.end(), std::isspace), str.end());
 	Queue<std::shared_ptr<Value>> result;
 	size_t StringSize = str.size();
 	for (size_t i = 0; i < StringSize; i++)
