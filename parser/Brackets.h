@@ -5,7 +5,7 @@
 class OpeningBracket : public Bracket
 {
 public:
-	OpeningBracket() : Bracket("Open") {}
+	bool isopen() const { return true; }
 	int GetPriority() { return bracket; }
 	void Calc(Stack<std::shared_ptr<Operand>> &stack) { stack; throw - 1; }
 };
@@ -13,7 +13,7 @@ public:
 class ClosingBracket : public Bracket
 {
 public:
-	ClosingBracket() : Bracket("Close") {}
+	bool isopen() const { return false; }
 	int GetPriority() { return bracket; }
 	void Calc(Stack<std::shared_ptr<Operand>> &stack) { stack; throw - 1; }
 };

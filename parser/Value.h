@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include <memory>
 #include <iostream>
 #include "Stack.h"
@@ -18,10 +17,8 @@ public:
 
 class Bracket : public Value
 {
-	std::string name;
 public:
-	Bracket(std::string _n) : name(_n) {}
-	std::string GetName() { return name; }
+	virtual bool isopen() const = 0;
 };
 
 class Operand : public Value

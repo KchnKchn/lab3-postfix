@@ -10,13 +10,13 @@
 std::shared_ptr<Operand> Converter::CreateOperand(const std::string str, size_t &i)
 {
 	std::string result = "";
-	while (((str[i] >= '0') && (str[i] <= '9')) && (str[i] != '\0'))
+	while (((str[i] >= '0') && (str[i] <= '9')) || (str[i] == '.'))
 	{
 		result += str[i];
 		i++;
 	}
 	i--;
-	return std::make_shared<Number>(std::stoi(result));
+	return std::make_shared<Number>(std::stod(result));
 }
 
 Queue<std::shared_ptr<Value>> Converter::ConvertToQueue(std::string str)
@@ -111,8 +111,8 @@ Queue<std::shared_ptr<Value>> Converter::ConvertToPostfix(Queue<std::shared_ptr<
 		}
 		if(val->GetPriority() == 0)
 		{
-			std::string bracket = (dynamic_cast<Bracket*>(val.get()))->GetName();
-			if (bracket == "Open")
+			bool bracket = (dynamic_cast<Bracket*>(val.get()))->isopen();
+			if (bracket)
 			{
 				operators.Push(val);
 				continue;
