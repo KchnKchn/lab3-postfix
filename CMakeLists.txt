@@ -6,6 +6,7 @@ include(cmake/function.cmake)
 
 add_subdirectory(parser)
 add_subdirectory(sample)
+add_subdirectory(GUI)
 
 option(BTEST "build test?" OFF)
 

@@ -1,0 +1,1 @@
+create_clr_executable_project(GUIversion)
