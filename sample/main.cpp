@@ -13,14 +13,25 @@ int main()
 	Calculator Calc;
 	std::shared_ptr<Operand> result;
 	Queue<std::shared_ptr<Value>> queue;
+	int i = 1;
 
-	std::cout << "Enter mathematical expression : ";
-	std::getline(std::cin, str);
-	
-	queue = Convert.ConvertToQueue(str);
-	queue = Convert.ConvertToPostfix(queue);
-	result = Calc.Calculate(queue);
+	while(true)
+	{
+		std::cout << i << " : ";
+		i++;
+		std::getline(std::cin, str);
 
-	std::cout << "Answer : " << *result.get() << std::endl;
+		if (str == "End")
+		{
+			break;
+		}
+
+		queue = Convert.ConvertToQueue(str);
+		queue = Convert.ConvertToPostfix(queue);
+		result = Calc.Calculate(queue);
+
+		std::cout << "Answer : " << *result.get() << std::endl;
+	}
+
 	return 0;
 }
